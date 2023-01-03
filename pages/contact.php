@@ -1,6 +1,6 @@
 <?php include_once 'header.php' ?>
     <main style="margin: 1%; width: 25%;">
-        <form action="index.php?page=contact" method="post">
+        <form action="?page=contact" method="post">
             <div class="form-group">
                 <label for="civil">Civilité</label>
                 <select name="civil" id="civil" class="form-control">

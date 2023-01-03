@@ -22,13 +22,13 @@
                         <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=page2">Page 2</a>
+                        <a class="nav-link" href="?page=page2">Page 2</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=page3">Page 3</a>
+                        <a class="nav-link" href="?page=page3">Page 3</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php?page=contact">Contact</a>
+                        <a class="nav-link" href="?page=contact">Contact</a>
                     </li>
                 </ul>
             </div>
