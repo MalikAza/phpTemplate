@@ -1,5 +1,7 @@
 <?php include_once 'header.php' ?>
-    <main>
+    <main style="margin: 1%">
+        <h1>Bienvenue sur Website Name !</h1>
+        <h2>Lorem ipsum section</h2>
         <p>Lorem ipsum dolor sit amet. Ut internos debitis sit iure eligendinam quis. Et labore sunt <strong>Qui officiis ad
                 voluptas voluptatem aut pariatur omnis quo dicta harum</strong> et similique consequatur nam architecto enim. Ut
             sint voluptateEx laudantium aut assumenda repellat aut consequatur consequatur et aliquid blanditiis. Et optio
