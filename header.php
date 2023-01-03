@@ -27,6 +27,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?page=page3">Page 3</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?page=contact">Contact</a>
+                    </li>
                 </ul>
             </div>
         </nav>

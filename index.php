@@ -6,6 +6,8 @@ if (isset($_GET['page'])) {
         include_once './pages/page2.php';
     } elseif ($page == 'page3') {
         include_once './pages/page3.php';
+    } elseif ($page == 'contact') {
+        include_once './pages/contact.php';
     } else {
         include_once './pages/notfound.php';
     }
