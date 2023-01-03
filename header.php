@@ -12,20 +12,20 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="nomdelapage.php">Website Name</a>
+            <a class="navbar-brand" href="/">Website Name</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="nomdelapage.php">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nomdelapage2.php">Page 2</a>
+                        <a class="nav-link" href="index.php?page=2">Page 2</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="nomdelapage3.php">Page 3</a>
+                        <a class="nav-link" href="index.php?page=3">Page 3</a>
                     </li>
                 </ul>
             </div>
