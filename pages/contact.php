@@ -3,7 +3,7 @@
 include "./funcs/contact.php";
 // init validation
 $valid = 0;
-print_r("post: $_POST\nempty post? => ". empty($_POST));
+
 if (!empty($_POST)) {
     // POST values
     $civil = filter_input(INPUT_POST, 'civil');
@@ -32,12 +32,15 @@ if (!empty($_POST)) {
 
                 <!-- error handling -->
                 <?php
-                if (isFieldSetAndNotEmpty($civil)) { $valid += 1; }
-                else { ?>
-                    <p style="color: red; font-size: small; font-style: italic;">
-                        Veuillez choisir un état civil valide.
-                    </p>
-                <?php }?>
+                if (isset($civil)) {
+                    if (!empty($civil)) {
+                        $valid += 1;
+                    } else { ?>
+                        <p style="color: red; font-size: small; font-style: italic;">
+                            Veuillez choisir un état civil valide.
+                        </p>
+                    <?php }
+                }?>
 
             </div>
 
@@ -74,12 +77,16 @@ if (!empty($_POST)) {
             <label for="email">E-mail</label>
             <input name="email" id="email" type="email" placeholder="name@example.com" class="form-control">
             <!-- error handling -->
-            <?php if (isFieldSetAndNotEmpty($email)) { $valid += 1; }
-             else { ?>
-                <p style="color: red; font-size: small; font-style: italic;">
-                    L'e-mail n'est pas valide.
-                </p>
-            <?php } ?>
+            <?php
+            if (isset($email)) {
+                if (!empty($email)) {
+                    $valid += 1;
+                } else { ?>
+                    <p style="color: red; font-size: small; font-style: italic;">
+                        L'e-mail n'est pas valide.
+                    </p>
+                <?php }
+            }?>
 
         </div>
 
@@ -102,12 +109,14 @@ if (!empty($_POST)) {
             </div>
 
             <!-- error handling -->
-            <?php if (isFieldSetAndNotEmpty($raison)) { $valid += 1; }
-             else {?>
+            <?php
+            if (isset($raison)) {
+                $valid += 1;
+            } elseif (!empty($_POST)) { ?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     Ce champ est obligatoire.
                 </p>
-            <?php }?>
+            <?php } ?>
 
         </div>
 
@@ -116,12 +125,16 @@ if (!empty($_POST)) {
             <label for="msg">Message</label>
             <textarea name="msg" id="msg" rows="5" class="form-control" style="resize: none"></textarea>
             <!-- error handling -->
-            <?php if (isFieldSetAndNotEmpty($msg) && strlen($msg) >= 5) { $valid += 1; }
-            else {?>
-                <p style="color: red; font-size: small; font-style: italic;">
-                    Le message doit au moins faire 5 caractères de long.
-                </p>
-            <?php }?>
+            <?php
+            if (isset($msg)) {
+                if (!empty($msg) && strlen($msg) >= 5) {
+                    $valid += 1;
+                } else { ?>
+                    <p style="color: red; font-size: small; font-style: italic;">
+                        Le message doit faire au moins 5 caractères de long.
+                    </p>
+                <?php }
+            } ?>
 
         </div>
 

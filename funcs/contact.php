@@ -18,12 +18,17 @@ function emptyFieldMsg() : string {
             '</p>';
 }
 
-function fieldValidation($formValue) {
-    if (isFieldSetAndNotEmpty($formValue)) {
-        $msg = "";
-        $valid = 1;
+function fieldValidation($formValue): array {
+    if (isset($formValue)) {
+        if (!empty($formValue)) {
+            $msg = "";
+            $valid = 1;
+        } else {
+            $msg = emptyFieldMsg();
+            $valid = 0;
+        }
     } else {
-        $msg = emptyFieldMsg();
+        $msg = "";
         $valid = 0;
     }
 
