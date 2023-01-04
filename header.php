@@ -18,16 +18,16 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item active"> <!-- TODO: dynamically change class active -->
+                    <li class="nav-item <?php echo !isset($_GET['page'])?'active':'' ?>">
                         <a class="nav-link" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php echo $_GET['page']=='page2'?'active':'' ?>">
                         <a class="nav-link" href="?page=page2">Page 2</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php echo $_GET['page']=='page3'?'active':'' ?>">
                         <a class="nav-link" href="?page=page3">Page 3</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item <?php echo $_GET['page']=='contact'?'active':'' ?>">
                         <a class="nav-link" href="?page=contact">Contact</a>
                     </li>
                 </ul>
