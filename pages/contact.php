@@ -76,7 +76,7 @@ if (!empty($_POST)) {
                 <input type="radio" id="prestations" name="raison" value="Prestations">
                 <label for="prestations">Prestations</label>
             </div>
-            <?php if (isset($raison) && empty($raison)) {?>
+            <?php if (isset($raison) && empty($raison)) { ?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     Ce champ est obligatoire.
                 </p>
@@ -85,7 +85,7 @@ if (!empty($_POST)) {
         <div class="form-group">
             <label for="msg">Message</label>
             <textarea name="msg" id="msg" rows="5" class="form-control" style="resize: none"></textarea>
-            <?php if (isset($msg) && strlen($msg) <= 5) {?>
+            <?php if (isset($msg) && !empty($msg) && strlen($msg) <= 5) {?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     Le message doit au moins faire 5 caractères de long.
                 </p>
