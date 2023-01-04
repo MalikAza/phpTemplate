@@ -9,10 +9,7 @@ function createContactFile($civil, $nom, $prenom, $email, $raison, $msg): void {
     file_put_contents($fileName, $content);
 }
 function isFieldSetAndEmpty($formValue): bool {
-    if (isset($formValue) && empty($formValue)) {
-        return true;
-    }
-    return false;
+    return (isset($formValue) && empty($formValue));
 }
 
 function emptyFieldMsg() : string {
@@ -25,9 +22,10 @@ function fieldValidation($formValue) {
     if (isFieldSetAndEmpty($formValue)) {
         $msg = emptyFieldMsg();
         $valid = 0;
+    } else {
+        $msg = "";
+        $valid = 1;
     }
-    $msg = "";
-    $valid = 1;
 
     return array($msg, $valid);
 }
