@@ -52,24 +52,17 @@ if (!empty($_POST)) {
         <div class="form-group" style="width: 33%">
             <label for="email">E-mail</label>
             <input name="email" id="email" type="email" placeholder="name@example.com" class="form-control">
-            <?php if (isset($email) && (empty($email)) || !$email) {
-                    // empty email
-                    if ($email) { ?>
-                        <p style="color: red; font-size: small; font-style: italic;">
-                            Ce champ est vide.
-                        </p>
-                    <!-- not empty but unvalid email -->
-                    <?php } else { ?>
-                        <p style="color: red; font-size: small; font-style: italic;">
-                            L'e-mail n'est pas valide.
-                        </p>
-                    <?php }
-            // not empty and valid email
-            } else { $valid += 1; }?>
+            <!-- empty or unvalid -->
+            <?php if (isset($email) && empty($email)) { ?>
+                <p style="color: red; font-size: small; font-style: italic;">
+                    L'e-mail n'est pas valide.
+                </p>
+            <!-- full and valid -->
+            <?php } else { $valid += 1; }?>
         </div>
         <div class="form-group">
             <label for="raison">Raison</label>
-
+            <!-- TODO raison is never set when not checked -->
             <div class="form-check">
                 <input type="radio" id="emploi" name="raison" value="Proposition d'emploi">
                 <label for="emploi">Proposition d'emploi</label>
