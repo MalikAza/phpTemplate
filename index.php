@@ -1,4 +1,7 @@
 <?php
+// header
+include_once 'header.php';
+// main content
 if (isset($_GET['page'])) {
     $page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -14,3 +17,5 @@ if (isset($_GET['page'])) {
 } else {
     include_once './pages/home.php';
 }
+// footer
+include_once 'footer.php';
