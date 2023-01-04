@@ -33,20 +33,20 @@ if (!empty($_POST)) {
             <div class="form-group col">
                 <label for="nom">Nom</label>
                 <input name="nom" id="nom" type="text" placeholder="Dupont" class="form-control">
-                <?php if (isset($nom) && empty($nom)) {?>
-                <p style="color: red; font-size: small; font-style: italic;">
-                    Ce champ est vide.
-                </p>
-                <?php } else { $valid += 1; }?>
+                <?php
+                list($msg, $isValid) = fieldValidation($nom);
+                $valid += $isValid;
+                echo $msg;
+                ?>
             </div>
             <div class="form-group col">
                 <label for="prenom">Prénom</label>
                 <input name="prenom" id="prenom" type="text" placeholder="Jacques" class="form-control">
-                <?php if (isset($prenom) && empty($prenom)) {?>
-                    <p style="color: red; font-size: small; font-style: italic;">
-                        Ce champ est vide.
-                    </p>
-                <?php } else { $valid += 1; }?>
+                <?php
+                list($msg, $isValid) = fieldValidation($nom);
+                $valid += $isValid;
+                echo $msg;
+                ?>
             </div>
         </div>
         <div class="form-group" style="width: 33%">
