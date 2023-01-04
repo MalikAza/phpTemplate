@@ -43,7 +43,7 @@ if (!empty($_POST)) {
                 <label for="prenom">Prénom</label>
                 <input name="prenom" id="prenom" type="text" placeholder="Jacques" class="form-control">
                 <?php
-                list($msg, $isValid) = fieldValidation($nom);
+                list($msg, $isValid) = fieldValidation($prenom);
                 $valid += $isValid;
                 echo $msg;
                 ?>
@@ -62,7 +62,6 @@ if (!empty($_POST)) {
         </div>
         <div class="form-group">
             <label for="raison">Raison</label>
-            <!-- TODO raison is never set when not checked -->
             <div class="form-check">
                 <input type="radio" id="emploi" name="raison" value="Proposition d'emploi">
                 <label for="emploi">Proposition d'emploi</label>
@@ -77,7 +76,7 @@ if (!empty($_POST)) {
                 <input type="radio" id="prestations" name="raison" value="Prestations">
                 <label for="prestations">Prestations</label>
             </div>
-            <?php if (isset($nom) && empty($nom)) {?>
+            <?php if (!isset($raison)) {?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     Ce champ est obligatoire.
                 </p>
@@ -86,7 +85,7 @@ if (!empty($_POST)) {
         <div class="form-group">
             <label for="msg">Message</label>
             <textarea name="msg" id="msg" rows="5" class="form-control" style="resize: none"></textarea>
-            <?php if (isset($nom) && strlen($nom) <= 5) {?>
+            <?php if (isset($msg) && strlen($msg) <= 5) {?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     Le message doit au moins faire 5 caractères de long.
                 </p>
