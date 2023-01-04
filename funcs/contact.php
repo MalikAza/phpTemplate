@@ -8,8 +8,8 @@ function createContactFile($civil, $nom, $prenom, $email, $raison, $msg): void {
     $content = "$civil\nnom: $nom\nprénom: $prenom\n$email\nRaison: $raison\nMessage: $msg";
     file_put_contents($fileName, $content);
 }
-function isFieldSetAndEmpty($formValue): bool {
-    return (isset($formValue) && empty($formValue));
+function isFieldSetAndNotEmpty($formValue): bool {
+    return (isset($formValue) && !empty($formValue));
 }
 
 function emptyFieldMsg() : string {
@@ -19,12 +19,12 @@ function emptyFieldMsg() : string {
 }
 
 function fieldValidation($formValue) {
-    if (isFieldSetAndEmpty($formValue)) {
-        $msg = emptyFieldMsg();
-        $valid = 0;
-    } else {
+    if (isFieldSetAndNotEmpty($formValue)) {
         $msg = "";
         $valid = 1;
+    } else {
+        $msg = emptyFieldMsg();
+        $valid = 0;
     }
 
     return array($msg, $valid);

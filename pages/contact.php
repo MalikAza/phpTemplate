@@ -3,6 +3,7 @@
 include "./funcs/contact.php";
 // init validation
 $valid = 0;
+print_r("post: $_POST\nempty post? => ". empty($_POST));
 if (!empty($_POST)) {
     // POST values
     $civil = filter_input(INPUT_POST, 'civil');
@@ -15,53 +16,76 @@ if (!empty($_POST)) {
 ?>
 
 <main style="margin: 1%; width: 50%;">
+
     <form action="?page=contact" method="post">
+
         <div class="form-row">
+
             <div class="form-group col">
+
                 <label for="civil">Civilité</label>
                 <select name="civil" id="civil" class="form-control">
                     <option value="">Choisissez un état civil</option>
                     <option>M.</option>
                     <option>Mme</option>
                 </select>
-                <?php if (isset($civil) && empty($civil)) {?>
+
+                <!-- error handling -->
+                <?php
+                if (isFieldSetAndNotEmpty($civil)) { $valid += 1; }
+                else { ?>
                     <p style="color: red; font-size: small; font-style: italic;">
                         Veuillez choisir un état civil valide.
                     </p>
-                <?php } else { $valid += 1; }?>
+                <?php }?>
+
             </div>
+
             <div class="form-group col">
+
                 <label for="nom">Nom</label>
                 <input name="nom" id="nom" type="text" placeholder="Dupont" class="form-control">
+                <!-- error handling -->
                 <?php
                 list($msg, $isValid) = fieldValidation($nom);
                 $valid += $isValid;
                 echo $msg;
                 ?>
+
             </div>
+
             <div class="form-group col">
+
                 <label for="prenom">Prénom</label>
                 <input name="prenom" id="prenom" type="text" placeholder="Jacques" class="form-control">
+                <!-- error handling -->
                 <?php
                 list($msg, $isValid) = fieldValidation($prenom);
                 $valid += $isValid;
                 echo $msg;
                 ?>
+
             </div>
+
         </div>
+
         <div class="form-group" style="width: 33%">
+
             <label for="email">E-mail</label>
             <input name="email" id="email" type="email" placeholder="name@example.com" class="form-control">
-            <!-- empty or unvalid -->
-            <?php if (isset($email) && empty($email)) { ?>
+            <!-- error handling -->
+            <?php if (isFieldSetAndNotEmpty($email)) { $valid += 1; }
+             else { ?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     L'e-mail n'est pas valide.
                 </p>
-            <!-- full and valid -->
-            <?php } else { $valid += 1; }?>
+            <?php } ?>
+
         </div>
+
         <div class="form-group">
             <label for="raison">Raison</label>
+
             <div class="form-check">
                 <input type="radio" id="emploi" name="raison" value="Proposition d'emploi">
                 <label for="emploi">Proposition d'emploi</label>
@@ -76,26 +100,39 @@ if (!empty($_POST)) {
                 <input type="radio" id="prestations" name="raison" value="Prestations">
                 <label for="prestations">Prestations</label>
             </div>
-            <?php if (isset($raison) && empty($raison)) { ?>
+
+            <!-- error handling -->
+            <?php if (isFieldSetAndNotEmpty($raison)) { $valid += 1; }
+             else {?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     Ce champ est obligatoire.
                 </p>
-            <?php } else { $valid += 1; }?>
+            <?php }?>
+
         </div>
+
         <div class="form-group">
+
             <label for="msg">Message</label>
             <textarea name="msg" id="msg" rows="5" class="form-control" style="resize: none"></textarea>
-            <?php if (isset($msg) && !empty($msg) && strlen($msg) <= 5) {?>
+            <!-- error handling -->
+            <?php if (isFieldSetAndNotEmpty($msg) && strlen($msg) >= 5) { $valid += 1; }
+            else {?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     Le message doit au moins faire 5 caractères de long.
                 </p>
-            <?php } else { $valid += 1; }?>
+            <?php }?>
+
         </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
+
     </form>
+
 </main>
 
 <?php
+echo "valid: $valid";
 if ($valid === 6) {
     createContactFile($civil, $nom, $prenom, $email, $raison, $msg);
 }
