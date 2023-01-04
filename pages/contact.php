@@ -11,7 +11,7 @@ if (!empty($_POST)) {
     $prenom = filter_input(INPUT_POST, 'prenom');
     $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
     $raison = filter_input(INPUT_POST, 'raison');
-    $msg = filter_input(INPUT_POST, 'msg');
+    $userMsg = filter_input(INPUT_POST, 'userMsg');
 }
 ?>
 
@@ -122,18 +122,16 @@ if (!empty($_POST)) {
 
         <div class="form-group">
 
-            <label for="msg">Message</label>
-            <textarea name="msg" id="msg" rows="5" class="form-control" style="resize: none"></textarea>
+            <label for="userMsg">Message</label>
+            <textarea name="userMsg" id="userMsg" rows="5" class="form-control" style="resize: none"></textarea>
             <!-- error handling -->
             <?php
-            if (isset($msg)) {
-                if (!empty($msg) && strlen($msg) >= 5) {
-                    $valid += 1;
-                } else { ?>
+            if (!empty($userMsg)) {
+                if (strlen($userMsg) < 5) { ?>
                     <p style="color: red; font-size: small; font-style: italic;">
                         Le message doit faire au moins 5 caractères de long.
                     </p>
-                <?php }
+                <?php } else { $valid += 1; }
             } ?>
 
         </div>
@@ -147,6 +145,6 @@ if (!empty($_POST)) {
 <?php
 echo "valid: $valid";
 if ($valid === 6) {
-    createContactFile($civil, $nom, $prenom, $email, $raison, $msg);
+    createContactFile($civil, $nom, $prenom, $email, $raison, $userMsg);
 }
 ?>
