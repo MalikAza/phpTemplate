@@ -123,7 +123,7 @@ if (!empty($_POST)) {
         <div class="form-group">
 
             <label for="userMsg">Message</label>
-            <textarea name="userMsg" id="userMsg" rows="5" class="form-control" style="resize: none"></textarea>
+            <textarea name="userMsg" id="userMsg" rows="5" class="form-control" style="resize: none" required></textarea>
             <!-- error handling -->
             <?php
             if (!empty($userMsg)) {
@@ -143,7 +143,6 @@ if (!empty($_POST)) {
 </main>
 
 <?php
-echo "valid: $valid";
 if ($valid === 6) {
     createContactFile($civil, $nom, $prenom, $email, $raison, $userMsg);
 }
