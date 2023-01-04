@@ -24,17 +24,17 @@
                 <label for="raison">Raison</label>
 
                 <div class="form-check">
-                    <input type="radio" id="emploi" name="raison" checked>
+                    <input type="radio" id="emploi" name="raison" checked value="Proposition d'emploi">
                     <label for="emploi">Proposition d'emploi</label>
                 </div>
 
                 <div class="form-check">
-                    <input type="radio" id="information" name="raison">
+                    <input type="radio" id="information" name="raison" value="Demande d'information">
                     <label for="information">Demande d'information</label>
                 </div>
 
                 <div class="form-check">
-                    <input type="radio" id="prestations" name="raison">
+                    <input type="radio" id="prestations" name="raison" value="Prestations">
                     <label for="prestations">Prestations</label>
                 </div>
             </div>
@@ -47,12 +47,20 @@
     </main>
 <?php
 if (!empty($_POST)) {
+    // POST values
     $civil = filter_input(INPUT_POST, 'civil');
     $nom = filter_input(INPUT_POST, 'nom');
     $prenom = filter_input(INPUT_POST, 'prenom');
     $email = filter_input(INPUT_POST, 'email');
     $raison = filter_input(INPUT_POST, 'raison');
     $msg = filter_input(INPUT_POST, 'msg');
+    // date
+    $today = date('Y-m-d-H-i-s');
+    // file
+    $fileName = "./contact/contact_$today.txt";
+        // content
+    $content = "$civil\nnom: $nom\nprénom: $prenom\n$email\nRaison: $raison\nMessage: $msg";
+    file_put_contents($fileName, $content);
 }
 ?>
 <?php include_once 'footer.php' ?>
