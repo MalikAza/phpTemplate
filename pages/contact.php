@@ -76,7 +76,7 @@ if (!empty($_POST)) {
                 <input type="radio" id="prestations" name="raison" value="Prestations">
                 <label for="prestations">Prestations</label>
             </div>
-            <?php if (!isset($raison)) {?>
+            <?php if (isset($raison) && empty($raison)) {?>
                 <p style="color: red; font-size: small; font-style: italic;">
                     Ce champ est obligatoire.
                 </p>
