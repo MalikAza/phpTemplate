@@ -1,19 +1,21 @@
  <main style="margin: 1%; width: 25%;">
     <form action="?page=contact" method="post">
-        <div class="form-group">
-            <label for="civil">Civilité</label>
-            <select name="civil" id="civil" class="form-control">
-                <option>M.</option>
-                <option>Mme</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="nom">Nom</label>
-            <input name="nom" id="nom" type="text" placeholder="Dupont" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="prenom">Prénom</label>
-            <input name="prenom" id="prenom" type="text" placeholder="Jacques" class="form-control">
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="civil">Civilité</label>
+                <select name="civil" id="civil" class="form-control">
+                    <option>M.</option>
+                    <option>Mme</option>
+                </select>
+            </div>
+            <div class="form-group col">
+                <label for="nom">Nom</label>
+                <input name="nom" id="nom" type="text" placeholder="Dupont" class="form-control">
+            </div>
+            <div class="form-group col">
+                <label for="prenom">Prénom</label>
+                <input name="prenom" id="prenom" type="text" placeholder="Jacques" class="form-control">
+            </div>
         </div>
         <div class="form-group">
             <label for="email">E-mail</label>
